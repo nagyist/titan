@@ -10,8 +10,8 @@ matrix:
   - env: MODULES="titan-berkeleyje"
   - env: MODULES="titan-es,titan-solr,titan-lucene"
   - env: MODULES="titan-hadoop-parent"
-install: "mvn install -DskipTests=true"
-script: "mvn verify -pl $MODULES"
+install: "mvn install -DskipTests=true -B"
+script: "mvn verify -pl $MODULES -B"
 before_deploy:
   - mvn package -DskipTests -Dgpg.skip=true -Paurelius-release
   - export TITAN_DIST_ZIP="$(ls titan-dist/titan-dist-hadoop-2/target/titan-*-hadoop2.zip)"
